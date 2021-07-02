@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+
 
 @Controller
 public class WeatherController {
@@ -22,8 +22,9 @@ public class WeatherController {
 	 *@return 結果画面 - 天気情報
 	 */
 	@PostMapping("/weather")
-	public String getCityCode(@RequestParam("citycode")String citycode,
-			Principal principal,Model model) {
+	public String getCityCode(Principal principal,Model model) {
+
+		String citycode = "016010";
 
 		WeatherEntity weatherEntity = weatherService.getWeather(citycode);
 		model.addAttribute("weatherEntity",weatherEntity);

@@ -48,7 +48,7 @@ public class WeatherService {
 				for (JsonNode forecast : node.get("forecasts")) {
 					WeatherData data = new WeatherData();
 					//dataLabelをDataクラスへ設定
-					data.setDataLabel(forecast.get("dataLabel").asText());
+					data.setDataLabel(forecast.get("dateLabel").asText());
 					//telopをDataクラスへ設定
 					data.setTelop(forecast.get("telop").asText());
 					//DataクラスをEntityの配列に追加

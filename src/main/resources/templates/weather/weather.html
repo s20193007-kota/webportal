@@ -70,9 +70,9 @@
 			<h1>札幌の天気予報</h1>
 			<p>(詳細)</p>
 
-			<ul th:erch="forecast : ${weatherEntity.forecasts">
+			<ul th:each="forecast : ${weatherEntity.forecasts}">
 				<li><h4><span th:text="${forecast.dataLabel}"></span></h4></li>
-				<li><span th:text="${forecast.telop"></span></li>
+				<li><span th:text="${forecast.telop}"></span></li>
 				</ul>
 		</div>
 	</div>
