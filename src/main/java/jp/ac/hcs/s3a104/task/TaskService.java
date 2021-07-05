@@ -42,7 +42,10 @@ public class TaskService {
 
 	/**
 	 * タスクを追加する
-	 * @param
+	 * @param userId
+	 * @param comment
+	 * @param limitday
+	 * @return TaskEntity
 	 */
 	public TaskEntity insert(String userId, String comment, String limitday) {
 		TaskEntity taskEntity = new TaskEntity();
@@ -65,6 +68,23 @@ public class TaskService {
 
 		int rowNumber = taskRepository.insertOne(taskData);
 		return taskEntity;
+	}
+
+	/**
+	 * 指定されたタスクのIDを削除する
+	 * @param id 指定されたID
+	 * @return 1件以上あればtrue、0件ならfalse
+	 */
+	public boolean delete(int id) {
+		int count;
+		try {
+			count = taskRepository.deleteOne(id);
+		}catch(DataAccessException e) {
+			e.printStackTrace();
+			count = 0;
+		}
+		return count > 0;
+
 	}
 
 	/**

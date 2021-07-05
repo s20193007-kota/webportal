@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -43,6 +44,14 @@ public class TaskController {
 		return "task/task";
 	}
 
+	/**
+	 * タスクを追加する
+	 * @param comment
+	 * @param limitday
+	 * @param principal
+	 * @param model
+	 * @return getTaskList
+	 */
 	@PostMapping("task/insert")
 	public String insertTask(@RequestParam("comment") String comment,
 			@RequestParam("limitday") String limitday,
@@ -52,6 +61,19 @@ public class TaskController {
 		log.info("[" + principal.getName() + "]タスク追加：" + "コメント：" + comment + "期限日：" + limitday);
 		return getTaskList(principal, model);
 	}
+
+	@GetMapping("task/delete/{id}")
+	public String deleteTask(@PathVariable("id")int id,Principal principal,Model model) {
+
+		boolean isSuccess = taskService.delete(id);
+		if(isSuccess) {
+			model.addAttribute("message","正常に削除されました");
+		}else {
+			model.addAttribute("errorMessage","削除されませんでした。再度登録し直してください。");
+		}
+		return getTaskList(principal,model);
+	}
+
 
 	/**
 	 * 自分の全てのタスク情報をCSVファイルとしてダウンロードさせる.
