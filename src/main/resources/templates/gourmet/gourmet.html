@@ -67,15 +67,14 @@
 	<!-- コンテンツ -->
 	<div class="container">
 		<div class="content-box">
-			<h1>札幌の天気予報</h1>
-			<p>(詳細)</p>
-
-			<ul th:each="forecast : ${weatherEntity.forecasts}">
-				<li><h4><span th:text="${forecast.dataLabel}"></span></h4></li>
-				<li><span th:text="${forecast.telop}"></span></li>
-				</ul>
-			<ul th:each="description : ${weatherEntity.description}">
-				<li><span th:text="${description}"</span></li>
+			<h1>北海道グルメ</h1>
+			<h2>検索結果</h2>
+			<!-- 基本1件だが、API構造に従い繰り返し構文とする -->
+			<ul th:each="shop : ${shopEntity.results}" th:object="${shop}">
+				<li><img class="shopimage" th:src=*{logo_image}></li>
+				<li><a th:href="*{url}"><span th:text="*{name}"></a></span></li>
+				<li><span th:text="*{address}"></span></li>
+				<li><span th:text="*{access}"></span></li>
 			</ul>
 		</div>
 	</div>

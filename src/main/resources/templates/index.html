@@ -100,6 +100,31 @@
 				</form>
 		</div>
 	</div>
+
+			<div class="col-sm-6">
+			<div class="content-box">
+					<h2 style="font-family: 'メイリオ'">飲食店検索 - 北海道</h2>
+					<form method="post" th:action="@{/gourmet}">
+					<input type="text" class="form-control" name="shopname"
+								placeholder="カテゴリー : XXXXXXX"> <span
+								class="input-group-btn">
+					<button type="submit" class="btn btn-success">検索</button>
+					</span>
+				</form>
+
+		</div>
+	</div>
+
+			<div class="col-sm-6" role="presentation"
+				sec:authorize="hasRole('ADMIN')">
+				<!-- 管理者のみのコンテンツ -->
+				<div class="content-box">
+					<h2>ユーザー管理</h2>
+					<form method="get" th:action="@{/user/list}">
+						<button type="submit" class="btn btn-success">ユーザー管理へ</button>
+					</form>
+				</div>
+			</div>
 </div>
 </div>
 

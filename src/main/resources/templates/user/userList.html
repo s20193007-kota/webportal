@@ -64,19 +64,34 @@
 		</div>
 	</nav>
 
+
 	<!-- コンテンツ -->
 	<div class="container">
 		<div class="content-box">
-			<h1>札幌の天気予報</h1>
-			<p>(詳細)</p>
+			<h1>ユーザー管理</h1>
+			<table border="2">
+			<thead>
+				<tr>
+					<th width="15%">ユーザーID(メールアドレス)</th>
+					<th width="10%">アカウント有効性</th>
+					<th width="5%">ユーザー名</th>
+					<th width="5%">ダークモード</th>
+					<th width="10%">権限</th>
+				</tr>
+				</thead>
+				<ul th:each="userlist : ${userEntity.userlist}">
 
-			<ul th:each="forecast : ${weatherEntity.forecasts}">
-				<li><h4><span th:text="${forecast.dataLabel}"></span></h4></li>
-				<li><span th:text="${forecast.telop}"></span></li>
-				</ul>
-			<ul th:each="description : ${weatherEntity.description}">
-				<li><span th:text="${description}"</span></li>
+				<tr>
+					<td><span th:text="${userlist.user_id}"></span></td>
+					<td><span th:text="${userlist.enabled}"></span></td>
+					<td><span th:text="${userlist.user_name}"></span></td>
+					<td><span th:text="${userlist.darkmode}"></span></td>
+					<td><span th:text="${userlist.role}"></span></td>
+				</tr>
 			</ul>
+			</table>
+			<br>
+			<button type="submit" class="btn btn-success">作成</button>
 		</div>
 	</div>
 

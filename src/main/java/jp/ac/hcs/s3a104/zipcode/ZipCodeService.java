@@ -53,6 +53,7 @@ public class ZipCodeService {
 				String message = node.get("message").asText();
 				zipCodeEntity.setMessage(message);
 
+
 				//resultsパラメータの抽出(配列分取得する)
 				for(JsonNode result : node.get("results")) {
 					//データクラスの生成(result1件分)
