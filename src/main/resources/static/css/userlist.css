@@ -1,0 +1,17 @@
+/*一覧表のヘッダーのレイアウト*/
+thead {
+	background:#3F4551;
+	font-weight: bold;
+	color:#fff;
+}
+
+/*一覧表のbodyのレイアウト*/
+td{
+	background:#E5E2E4;
+	font-weight: bold
+}
+
+/*各項目左寄せ*/
+h1,.insert{
+	text-align: left;
+}

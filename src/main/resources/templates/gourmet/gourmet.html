@@ -73,7 +73,7 @@
 			<ul th:each="shop : ${shopEntity.results}" th:object="${shop}">
 				<li><img class="shopimage" th:src=*{logo_image}></li>
 				<li><a th:href="*{url}"><span th:text="*{name}"></a></span></li>
-				<li><span th:text="*{address}"></span></li>
+				<li><<span th:text="*{address}"></span></li>
 				<li><span th:text="*{access}"></span></li>
 			</ul>
 		</div>

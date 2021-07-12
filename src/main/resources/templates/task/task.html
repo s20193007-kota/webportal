@@ -86,7 +86,7 @@
 
 			<ul th:each="tasklist : ${taskEntity.tasklist}">
 				<li>
-					<a th:href="@{'/task/delete/' + ${tasklist.id}}">
+					<a @click="popUpAlert" type="button"  th:href="@{'/task/delete/' + ${tasklist.id}}">
 						<span th:text="${tasklist.comment}"></span>
 					</a>
 					<span th:text="${tasklist.limitday}"></span>
